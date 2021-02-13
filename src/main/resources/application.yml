@@ -1,0 +1,32 @@
+spring:
+  data:
+    mongodb:
+      authentication-database: admin
+      username: car
+      password: car
+      database: car
+      port: 27017
+      host: localhost
+  rabbitmq:
+    username: car
+    password: car
+  cloud:
+    stream:
+      bindings:
+        input:
+          destination: car
+          group: groupcar
+api:
+  path:
+    car:
+      v1:
+        host: http://api-test.bhut.com.br:3000
+        basePath: /api
+        get: /cars
+        findById: /cars/{id}
+        post: /cars
+        put: /cars/{id}
+        delete: /cars/{id}
+queue:
+  order:
+    name: LogCarQueue

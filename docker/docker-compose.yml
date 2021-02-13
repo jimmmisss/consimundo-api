@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  mongodb_rango:
+    container_name: mongo_car
+    image: mongo:4.2.12-bionic
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: car
+      MONGO_INITDB_ROOT_PASSWORD: car
+      MONGO_INITDB_DATABASE: car
+  rabbitmq:
+    image: rabbitmq:3-management
+    ports:
+      - 8881:15672
+      - 5671:5671
+      - 5672:5672
+    environment:
+      RABBITMQ_DEFAULT_USER: car
+      RABBITMQ_DEFAULT_PASS: car
