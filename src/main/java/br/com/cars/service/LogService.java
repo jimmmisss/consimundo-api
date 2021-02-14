@@ -3,14 +3,13 @@ package br.com.cars.service;
 import br.com.cars.document.Log;
 import br.com.cars.exceptions.BusinessException;
 import br.com.cars.reposirory.LogRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class LogService {
 
     private final LogRepository logRepository;

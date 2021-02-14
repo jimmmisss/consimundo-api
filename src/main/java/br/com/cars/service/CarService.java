@@ -7,11 +7,10 @@ import br.com.cars.dto.output.CarOutputDTO;
 import br.com.cars.exceptions.BusinessException;
 import br.com.cars.integration.CarIntegrationV1Service;
 import br.com.cars.mapper.Mappable;
-import lombok.RequiredArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.amqp.core.Queue;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -21,7 +20,7 @@ import java.util.stream.Collectors;
 import static br.com.cars.service.queue.QueueCar.sendObjectsQueueString;
 
 @Service
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class CarService implements Mappable {
 
     private final CarIntegrationV1Service carIntegrationV1Service;
@@ -41,8 +40,9 @@ public class CarService implements Mappable {
     }
 
     @Transactional
-    public void save(CarInputDTO car) throws BusinessException {
-        carIntegrationV1Service.save(mapper.map(car, Car.class));
+    public CarOutputDTO save(CarInputDTO car) throws BusinessException {
+        final var savedCar = carIntegrationV1Service.save(mapper.map(car, Car.class));
+        return map(savedCar, CarOutputDTO.class);
     }
 
     @Transactional

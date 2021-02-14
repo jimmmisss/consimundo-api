@@ -32,7 +32,7 @@ public interface CarControllerOpenApi {
     @ApiResponses({
         @ApiResponse(code = 201, message = "Carro cadastrado"),
     })
-    void save(@RequestBody CarInputDTO car) throws BusinessException;
+    CarOutputDTO save(@RequestBody CarInputDTO car) throws BusinessException;
 
     @ApiOperation("Atualiza carros na api externa")
     @ApiResponses({

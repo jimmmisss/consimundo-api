@@ -4,8 +4,7 @@ import br.com.cars.controller.openapi.LogControllerOpenApi;
 import br.com.cars.document.Log;
 import br.com.cars.exceptions.BusinessException;
 import br.com.cars.service.LogService;
-import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -17,7 +16,7 @@ import static org.springframework.http.HttpStatus.OK;
 
 @RestController
 @RequestMapping(value = "/v1/logs")
-@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+@AllArgsConstructor
 public class LogController implements LogControllerOpenApi {
 
     private final LogService logService;

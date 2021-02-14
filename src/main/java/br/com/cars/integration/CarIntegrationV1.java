@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @FeignClient(url = "${api.path.car.v1.host}${api.path.car.v1.basePath}", name = "CarIntegrationV1")
-interface CarIntegrationV1 {
+public interface CarIntegrationV1 {
 
     @GetMapping("${api.path.car.v1.get}")
     List<Car> findAll() throws IntegrationException;
@@ -17,7 +17,7 @@ interface CarIntegrationV1 {
     Car findById(@PathVariable("id") String id) throws IntegrationException;
 
     @PostMapping("${api.path.car.v1.post}")
-    void save(Car car) throws IntegrationException;
+    Car save(Car car) throws IntegrationException;
 
     @PutMapping("${api.path.car.v1.put}")
     void update(@PathVariable("id") String id, @RequestBody Car car) throws IntegrationException;
